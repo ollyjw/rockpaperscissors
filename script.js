@@ -1,88 +1,107 @@
+let computerScore = 0;
+let playerScore = 0;
+
+const rps = ["Rock", "Paper", "Scissors"];
+
+const computerSelection = computerPlay();
+let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
+
+//validation attempt
+// let playerSelection = null;
+//   do {
+//     playerSelection = prompt('Rock, paper or scissors?').toLowerCase();
+//   } while (!rps.includes(playerSelection));
+
+
+
+// computer makes random choice from rps array - random no. times by array length (i.e. 3) then rounded down, picks array item 0, 1 or 2
+function computerPlay() {
+    const computerMove = rps[Math.floor(Math.random() * rps.length)];
+    return computerMove;
+}
+
+// single round of rock paper scissors - adds 1 to score, returns string of result
+function playRound(playerSelection, computerSelection) {
+    //Rock < paper
+    if (playerSelection === "rock" && computerSelection === rps[1]) {
+        computerScore += 1;        
+        return `Round lost! ${computerSelection} beats ${playerSelection}. You: ${playerScore} Computer: ${computerScore}`;
+    }
+    // Rock > Scissors
+    else if (playerSelection === "rock" && computerSelection === rps[2]) {
+        playerScore += 1;
+        return `Round won! ${playerSelection} beats ${computerSelection}. You: ${playerScore} Computer: ${computerScore}`;
+    }
+    // Paper < Scissors 
+    else if (playerSelection === "paper" && computerSelection === rps[2]) {
+        computerScore += 1;
+        return `Round lost! ${computerSelection} beats ${playerSelection}. You: ${playerScore} Computer: ${computerScore}`;
+    }
+    // Paper > Rock
+    else if (playerSelection === "paper" && computerSelection === rps[0]) {
+        playerScore += 1;
+        return `Round won! ${playerSelection} beats ${computerSelection}. You: ${playerScore} Computer: ${computerScore}`;
+    }
+    // Scissors < Rock
+    else if (playerSelection === "scissors" && computerSelection === rps[0]) {
+        computerScore += 1;
+        return `Round lost! ${computerSelection} beats ${playerSelection}. You: ${playerScore} Computer: ${computerScore}`;
+    }
+    // Scissors > Paper
+    else if (playerSelection === "scissors" && computerSelection === rps[1]) {
+        playerScore += 1;
+        return `Round won! ${playerSelection} beats ${computerSelection}. You: ${playerScore} Computer: ${computerScore}`;
+    }
+    // Draw condition
+    else {
+        return `Draw! You made the same choice. You: ${playerScore} Computer: ${computerScore}`;
+    }
+}
+
+
+// Putting these here to print to console after round 1
+console.log(`You picked ${playerSelection}, computer picked ${computerSelection}`);
+console.log(playRound(playerSelection, computerSelection));
+
 function game() {
-
-    const rps = ["Rock", "Paper", "Scissors"];
-    let computerScore = 0;
-    let playerScore = 0;  
-
-    const computerSelection = computerPlay();
-    let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();  
-
-    // computer makes random choice from rps array
-    function computerPlay() {
-        const computerMove = rps[Math.floor(Math.random()*rps.length)];
-        return computerMove;
-    }
-
-    // single round of rock paper scissors - adds 1 to score, returns string of result
-    function playRound(playerSelection, computerSelection) {     
-        //Rock < paper
-        if (playerSelection === "rock" && computerSelection === rps[1]) {
-            computerScore++;
-            return "Round lost! Paper beats Rock";
-        }
-        // Rock > Scissors
-        else if (playerSelection === "rock" && computerSelection === rps[2]) {
-            playerScore++;
-            return "Round won! Rock beats Scissors";
-        }   
-        // Paper < Scissors 
-        else if (playerSelection === "paper" && computerSelection === rps[2]) {
-            computerScore++;
-            return "Round lost! Scissors beats Paper";
-        }
-        // Paper > Rock
-        else if (playerSelection === "paper" && computerSelection === rps[0]) {
-            playerScore++;
-            return "Round won! Paper beats Rock";
-        }
-        // Scissors < Rock
-        else if (playerSelection === "scissors" && computerSelection === rps[0]) {
-            computerScore++;
-            return "Round lost! Rock beats Scissors";
-        }
-        // Scissors > Paper
-        else if (playerSelection === "scissors" && computerSelection === rps[1]) {
-            playerScore++;
-            return "Round won! Scissors beats Rock";
-        }
-        else {
-            return "Draw! You made the same choice."
-        }  
-    }
-
-    console.log("You picked " + playerSelection + ", PC picked " + computerSelection);
-    console.log(playRound(playerSelection, computerSelection));
-    
-
-    //make 5 rounds & keep score AND Report winner/loser at end
-    for (let i = 0; i < 5; i++) {   
+    // while loop - first to 3 points wins
+    while (playerScore < 3 && computerScore < 3) {
+        
+        // gotta declare these again for some reason
         let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
         let computerSelection = computerPlay();
-
-        // clear console of previous round choices
-        console.clear();
-
-        // print moves
-        console.log("You picked " + playerSelection + ", PC picked " + computerSelection);
-        
-        // print round results
-        console.log(playRound(playerSelection, computerSelection));
-    
-        //print scoreboard       
-        scoreboard = "Your score is " + playerScore + ", PCs score is " + computerScore;
-        console.log(scoreboard);
 
         // call playRound function
         playRound(playerSelection, computerSelection);
 
+        // clear console of previous round choices
+        // console.clear();
+
+        // print moves
+        console.log(`You picked ${playerSelection}, computer picked ${computerSelection}`);
+
+        // print round results
+        console.log(playRound(playerSelection, computerSelection));       
+
     }
+
+    function finalResult() {
+        if (playerScore === 3) {
+            return "Congratulations! You win the game."
+        } else if (computerScore === 3) {
+            return "Defeat! Better luck next time."
+        }
+    }
+
+    console.log(finalResult());
 
 }
 
+// Call game function
 game();
 
-// To do:
-// - scoreboard only appears after 2nd round
-// - print to console overall victor at the end
-// - make it Bo5 - first to 3 points wins
+
+// To fix:
 // - validate player input so you can only type the 3 options
+// - Score sometimes increases by 2 ?!?
+// - A Draw sometimes gives a point???? Points added to losing side similtaneously as winning side?????
