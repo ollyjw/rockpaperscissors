@@ -3,17 +3,6 @@ let playerScore = 0;
 
 const rps = ["Rock", "Paper", "Scissors"];
 
-const computerSelection = computerPlay();
-let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
-
-//validation attempt
-// let playerSelection = null;
-//   do {
-//     playerSelection = prompt('Rock, paper or scissors?').toLowerCase();
-//   } while (!rps.includes(playerSelection));
-
-
-
 // computer makes random choice from rps array - random no. times by array length (i.e. 3) then rounded down, picks array item 0, 1 or 2
 function computerPlay() {
     const computerMove = rps[Math.floor(Math.random() * rps.length)];
@@ -58,21 +47,18 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
-// Putting these here to print to console after round 1
-console.log(`You picked ${playerSelection}, computer picked ${computerSelection}`);
-console.log(playRound(playerSelection, computerSelection));
-
 function game() {
     // while loop - first to 3 points wins
     while (playerScore < 3 && computerScore < 3) {
+
+        //validation attempt
+        // let playerSelection = null;
+        //   do {
+        //     playerSelection = prompt('Rock, paper or scissors?').toLowerCase();
+        //   } while (!rps.includes(playerSelection));
         
-        // gotta declare these again for some reason
         let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
         let computerSelection = computerPlay();
-
-        // call playRound function
-        playRound(playerSelection, computerSelection);
 
         // clear console of previous round choices
         // console.clear();
@@ -103,5 +89,3 @@ game();
 
 // To fix:
 // - validate player input so you can only type the 3 options
-// - Score sometimes increases by 2 ?!?
-// - A Draw sometimes gives a point???? Points added to losing side similtaneously as winning side?????
