@@ -41,6 +41,10 @@ function playRound(playerSelection, computerSelection) {
         playerScore += 1;
         return `Round won! ${playerSelection} beats ${computerSelection}. You: ${playerScore} Computer: ${computerScore}`;
     }
+    // Validation
+    else if (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+        return 'Wrong input. No points awarded. Please choose rock, paper or scissors.'
+    }
     // Draw condition
     else {
         return `Draw! You made the same choice. You: ${playerScore} Computer: ${computerScore}`;
@@ -50,13 +54,7 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     // while loop - first to 3 points wins
     while (playerScore < 3 && computerScore < 3) {
-
-        //validation attempt
-        // let playerSelection = null;
-        //   do {
-        //     playerSelection = prompt('Rock, paper or scissors?').toLowerCase();
-        //   } while (!rps.includes(playerSelection));
-        
+       
         let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
         let computerSelection = computerPlay();
 
@@ -85,7 +83,3 @@ function game() {
 
 // Call game function
 game();
-
-
-// To fix:
-// - validate player input so you can only type the 3 options
