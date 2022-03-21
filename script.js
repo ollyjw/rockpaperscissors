@@ -19,32 +19,32 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
     round += 1;
     //Rock < paper
-    if (playerSelection === "rock" && computerSelection === rps[1]) {
+    if (playerSelection === "Rock" && computerSelection === rps[1]) {
         computerScore += 1;        
         return `Round lost! ${computerSelection} beats ${playerSelection}.`;
     }
     // Rock > Scissors
-    else if (playerSelection === "rock" && computerSelection === rps[2]) {
+    else if (playerSelection === "Rock" && computerSelection === rps[2]) {
         playerScore += 1;
         return `Round won! ${playerSelection} beats ${computerSelection}.`;
     }
     // Paper < Scissors 
-    else if (playerSelection === "paper" && computerSelection === rps[2]) {
+    else if (playerSelection === "Paper" && computerSelection === rps[2]) {
         computerScore += 1;
         return `Round lost! ${computerSelection} beats ${playerSelection}.`;
     }
     // Paper > Rock
-    else if (playerSelection === "paper" && computerSelection === rps[0]) {
+    else if (playerSelection === "Paper" && computerSelection === rps[0]) {
         playerScore += 1;
         return `Round won! ${playerSelection} beats ${computerSelection}.`;
     }
     // Scissors < Rock
-    else if (playerSelection === "scissors" && computerSelection === rps[0]) {
+    else if (playerSelection === "Scissors" && computerSelection === rps[0]) {
         computerScore += 1;
         return `Round lost! ${computerSelection} beats ${playerSelection}.`;
     }
     // Scissors > Paper
-    else if (playerSelection === "scissors" && computerSelection === rps[1]) {
+    else if (playerSelection === "Scissors" && computerSelection === rps[1]) {
         playerScore += 1;
         return `Round won! ${playerSelection} beats ${computerSelection}.`;
     }
@@ -104,15 +104,15 @@ const replayBtn = document.querySelector('#replay');
 
 
 rockBtn.addEventListener('click', () => {
-    game('rock');
+    game('Rock');
 });
 
 paperBtn.addEventListener('click', () => {
-    game('paper');
+    game('Paper');
 });
 
 scissorsBtn.addEventListener('click', () => {
-    game('scissors');
+    game('Scissors');
 });
 
 
