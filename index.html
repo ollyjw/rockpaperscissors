@@ -2,15 +2,52 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Page Title</title>
+<title>Rock Paper Scissors</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="style.css">
-<!-- <style src="style.css"></style> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Palette+Mosaic&family=Red+Hat+Mono:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <div></div>
+    <div class="container">
+        <div class="game-container">
+            <div class="header-row text-center">
+                <h1 class="font-white" id="game-title">Rock, Paper, Scissors</h1>
+                <h2 class="font-white" id="game-subtitle">Bo5</h2>
+            </div>
+            <div class="results-row">            
+                <p class="font-white text-center" id="moves"></p>
+                <h3 class="font-white text-center" id="round-result"></h3>
+                <h2 class="font-white text-center" id="final-result"></h2>
+                
+            </div>
+            <div class="score-row">
+                <div class="scoreboard" id="tile1">
+                    <div class="score"><span id="round"></span></div>
+                    <div class="label">Round</div>
+                </div>
+                <div class="scoreboard">
+                    <div class="score"><span id="player-score"></span></div>
+                    <div class="label">Player</div>
+                </div>
+                <div class="scoreboard" id="tile3">
+                    <div class="score"><span id="computer-score"></span></div>
+                    <div class="label">Computer</div>
+                </div>
+            </div>
+            <div class="choice-row">
+                <a id="rock" class="btn">Rock</a>
+                <a id="paper" class="btn">Paper</a>
+                <a id="scissors" class="btn">Scissors</a>
+            </div>
+            <div class="restart-row">
+                <a id="replay" class="btn">Play again?</a>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 
